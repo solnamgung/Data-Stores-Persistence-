@@ -1,17 +1,13 @@
-package com.dataPersistence.Data.Store.Persistence.DeliveringFlowers;
+package com.dataPersistence.Data.Store.Persistence.DeliveryPlants;
 
 import org.hibernate.annotations.Nationalized;
 import org.hibernate.annotations.Type;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 public class Delivery {
-
     @Id
     @GeneratedValue
     private Long id;
@@ -19,12 +15,16 @@ public class Delivery {
     @Nationalized
     private String name;
 
-    @Column(name = "address_full", length = 500)
+    @Column(name="address_full", length=500)
     private String address;
     private LocalDateTime deliveryTime;
-
     @Type(type="yes_no")
     private Boolean completed;
+
+    //make sure to specify mappedBy. Lazy fetch optional,
+    //  but often a good idea for collection attributes
+    @OneToMany(fetch = FetchType.LAZY, mappedBy ="delivery")
+    private List<Plant> plants;
 
     public Long getId() {
         return id;
@@ -64,5 +64,13 @@ public class Delivery {
 
     public void setCompleted(Boolean completed) {
         this.completed = completed;
+    }
+
+    public List<Plant> getPlants() {
+        return plants;
+    }
+
+    public void setPlants(List<Plant> plants) {
+        this.plants = plants;
     }
 }
