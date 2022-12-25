@@ -1,0 +1,20 @@
+
+You're creating a flower-delivery service.
+Create two new Java classes representing the following Entities:
+1. A Flower for your company to sell.
+2. A Delivery you will make.
+
+The Flower should have a name, color, and price attribute.
+Flowers will be stored in a table called 'plant'.
+Make sure the price is stored as a DECIMAL column with 12 precision and 4 decimal places (scale).
+
+The Delivery should have a recipient name, address, delivery date, and delivery time.
+Let's store the whole address in a single field, so make sure the column will be wide enough to hold up to 500 characters.
+We'll call this column address_full.
+There should also be an attribute on the Delivery entity that shows if it is completed or not,
+which should show up as 'Y' or 'N' in the database.
+Make sure that both the flower name and recipient name will support international language characters
+and that the delivery time is stored without timezone information.
+Finally, make sure to add getters and setters to your classes.
+We won't explicitly cover getter and setter methods as they're part of the prerequisite knowledge required for this course,
+but they're still a very important, and required, part of many Java classes!
